@@ -1,0 +1,66 @@
+mode : train # inference
+save_model : True # false for inference 
+model_name : "2025_sd3_lora_512_rank_64_7_seeds_skip_date_location_1_epoch"
+test_lora"version : "1.0"
+tracker_name : "_test"
+load_path : null
+
+
+###################################################
+output_dir : "/home/ecomapper/data/datasets/models/finetuned/"
+logging_dir : /home/ecomapper/Ecomapper/logs/
+project_dir : /home/ecomapper/Ecomapper/
+
+checkpointing_steps : 10000 # resume the training? from which checkpoint? latest?
+resume_from_checkpoint : "" # [latest, checkpoint-1000, ""]
+checkpoints_total_limit : 5
+
+
+rank : 64 # LoRA 
+
+####### optimizer setting #######
+
+use_8bit_adam : False
+learning_rate : 2e-6
+weight_decay : 1e-2
+adam_beta1 : 0.9
+adam_beta2 : 0.999
+adam_epsilon : 1e-8
+weighting_scheme: logit_normal #["sigma_sqrt", "logit_normal", "mode", "cosmap"],
+##### training and dataloader setting ########
+gradient_accumulation_steps : 2
+per_gpu_batch_size : 16
+input_size : 512 
+max_epochs : 1
+num_workers : 32
+
+######################### DATASET ##########################
+dataset_root: "/home/ecomapper/data/datasets/"
+dataset_names: [
+      "proportional_sampled_points_seed_14", 
+      "proportional_sampled_points_seed_28", 
+      "proportional_sampled_points_seed_42",
+      "proportional_sampled_points_seed_56",
+      "proportional_sampled_points_seed_84",
+      "proportional_sampled_points_seed_112",
+      "proportional_sampled_points_seed_126", 
+      #"proportional_sampled_points_seed_140"
+]
+csv_paths : [
+      "/home/ecomapper/data/datasets/seed_14_final.csv", 
+      "/home/ecomapper/data/datasets/seed_28_final.csv", 
+      "/home/ecomapper/data/datasets/seed_42_final.csv",
+      "/home/ecomapper/data/datasets/seed_56_final.csv",
+      "/home/ecomapper/data/datasets/seed_84_final.csv",
+      "/home/ecomapper/data/datasets/seed_112_final.csv",
+      "/home/ecomapper/data/datasets/seed_126_final.csv",
+      #"/home/ecomapper/data/datasets/seed_140_final.csv"
+]
+################################################################
+
+##### other settings
+log_with : 'tensorboard' # only tensorboard
+local_rank : 1
+max_grad_norm : 1.0
+loss : 'mse_loss'
+seed : 7777

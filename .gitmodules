@@ -1,0 +1,3 @@
+[submodule "DiffusionSat"]
+	path = DiffusionSat
+	url = https://github.com/samar-khanna/DiffusionSat

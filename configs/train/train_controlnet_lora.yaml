@@ -1,0 +1,104 @@
+# Experiment tracking
+tracker_project_name: "name/of/the/model/that/you/want/to/train"  # Project name for tracking (default: train_controlnet).
+
+# Pretrained model configuration
+pretrained_model_name_or_path: "stabilityai/stable-diffusion-3-medium-diffusers" # Path or Hugging Face hub name of the pretrained model.
+pretrained_single_image_transformer_path: "path/to/pretrained/model" # Path or Hugging Face hub name of the pretrained model.
+controlnet_model_name_or_path: null # Path or Hugging Face hub name of the ControlNet model.
+num_extra_conditioning_channels: 0  # Number of additional conditioning channels (default: 0).
+revision: "main" # Model revision (default: main branch).
+variant: "fp16"  # Precision variant (default: fp16).
+num_of_controlnet_layers: 12 # The number of layers in ControlNet must be a divisor of 24.
+
+# Output and cache directories
+output_dir: "/home/ecomapper/data/datasets/models/finetuned/"  # Directory to save trained models.
+cache_dir: "/home/ecomapper/data/datasets/cache"     # Cache directory for datasets and models.
+
+# Training seed
+seed: 7777  # Random seed for reproducibility (default: 42).
+
+# Image resolution
+input_size: 512  # Input image resolution (default: 512x512).
+
+# Training parameters
+per_gpu_batch_size: 8  # Training batch size (default: 4).
+num_train_epochs: 2  # Number of training epochs (default: 1).
+max_train_steps: null  # Maximum number of training steps (null means calculated based on epochs and dataset size).
+checkpointing_steps: 1000  # Save checkpoint every n steps (default: 500).
+checkpoints_total_limit: 2  # Maximum number of checkpoints to keep (default: 5).
+resume_from_checkpoint: null  # Path to resume training from a checkpoint.
+
+# Gradient and optimization settings
+gradient_accumulation_steps: 2  # Number of gradient accumulation steps (default: 1).
+gradient_checkpointing: false  # Enable gradient checkpointing to save memory (default: false).
+upcast_vae: true  # Use upcasting for VAE model (default: false).
+learning_rate: 2e-6  # Initial learning rate (default: 5e-6).
+scale_lr: false  # Scale learning rate by batch size (default: false).
+lr_scheduler: "constant"  # Learning rate scheduler (default: constant).
+lr_warmup_steps: 500  # Number of warmup steps for the scheduler (default: 500).
+lr_num_cycles: 1  # Number of cycles for the scheduler (default: 1).
+lr_power: 1.0  # Power of polynomial decay for the scheduler (default: 1.0).
+
+# Adam optimizer settings
+use_8bit_adam: false  # Use 8-bit Adam for mixed precision training (default: false).
+adam_beta1: 0.9  # Beta1 for Adam optimizer (default: 0.9).
+adam_beta2: 0.999  # Beta2 for Adam optimizer (default: 0.999).
+adam_weight_decay: 0.01  # Weight decay for Adam optimizer (default: 0.01).
+adam_epsilon: 1e-08  # Epsilon for Adam optimizer (default: 1e-08).
+max_grad_norm: 1.0  # Maximum gradient norm for clipping (default: 1.0).
+weighting_scheme: logit_normal # default="logit_normal". choices "sigma_sqrt", "logit_normal", "mode", "cosmap"
+logit_mean: 0.0  # default=0.0
+logit_std: 1.0  # default=1.0
+mode_scale: 1.29 # default=1.29 Scale of mode weighting scheme. Only effective when using the `'mode'` as the `weighting_scheme`.
+precondition_outputs: 1 # default=1 Flag indicating if we are preconditioning the model outputs or not as done in EDM. This affects how ""model `target` is calculated.
+
+# Logging and reporting
+logging_dir: "logs"  # Directory for logs.
+report_to: "tensorboard"  # Tool for logging metrics (default: tensorboard).
+
+# Precision and performance settings
+mixed_precision: "fp16"  # Mixed precision training (options: "no", "fp16", "bf16"; default: fp16).
+allow_tf32: false  # Allow TensorFloat-32 on compatible GPUs (default: false).
+set_grads_to_none: false  # Zero gradients by setting them to None (default: false).
+
+# Dataset configuration
+max_sequence_length: 256  # Maximum sequence length for tokenization (default: 77).
+num_workers: 32 # Number of subprocesses to use for data loading. 0 means that the data will be loaded in the main process. (default: 0).
+
+# Validation
+validation_prompt: null  # Validation text prompt.
+validation_image: null  # Path to validation image(s).
+num_validation_images: 4  # Number of images for validation (default: 4).
+validation_steps: 100  # Run validation every n steps (default: 100).
+
+# Weights and Biases (optional)
+push_to_hub: false  # Push trained model to Hugging Face hub (default: false).
+hub_token: null  # Token for Hugging Face hub authentication.
+hub_model_id: null  # Model ID for Hugging Face hub.
+
+dataset_names : [
+  "proportional_sampled_points_seed_14",
+  "proportional_sampled_points_seed_28", 
+  "proportional_sampled_points_seed_42",
+  "proportional_sampled_points_seed_56", 
+  "proportional_sampled_points_seed_70_new", 
+  "proportional_sampled_points_seed_84",
+  "proportional_sampled_points_seed_112",
+  "proportional_sampled_points_seed_126",
+  "proportional_sampled_points_seed_140",
+
+]
+csv_paths : [
+  "/home/ecomapper/data/datasets/seed_14_final.csv",
+  "/home/ecomapper/data/datasets/seed_28_final.csv", 
+  "/home/ecomapper/data/datasets/seed_42_final.csv",
+  "/home/ecomapper/data/datasets/seed_56_final.csv",
+  "/home/ecomapper/data/datasets/seed_70_train.csv" ,
+  "/home/ecomapper/data/datasets/seed_84_final.csv",
+  "/home/ecomapper/data/datasets/seed_112_final.csv",
+  "/home/ecomapper/data/datasets/seed_126_final.csv",
+  "/home/ecomapper/data/datasets/seed_140_final.csv",
+]
+
+root_path: "/home/ecomapper/data/datasets"
+lora_rank: 64

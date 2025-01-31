@@ -1,0 +1,93 @@
+mode : train # inference
+save_model : True # false for inference 
+load_text_encoder : True
+model_name : "Final_diffusionsat_weather_2_epochs"
+version : "1.0"
+tracker_name : "_test"
+load_path : "/home/ecomapper/data/datasets/models/finetuned/sd3_basemodel_new_captions_cleaned"
+####  pretrained model path
+unet_path : /home/ecomapper/data/datasets/models/diffusionsat/finetune_sd21_sn-satlas-fmow_snr5_md7norm_bs64/checkpoint-150000/
+pipeline_path : /home/ecomapper/data/datasets/models/diffusionsat/finetune_sd21_sn-satlas-fmow_snr5_md7norm_bs64/
+
+######## logging dir : images and tensorboard
+
+logging_dir : /home/ecomapper/Ecomapper/logs/
+log_steps : 10  # every #log_steps validate model
+max_log_images_per_validation_step : 32
+max_test_images : 32
+test_image_index : ""
+inference_dir : /home/ecomapper/Ecomapper/inference/
+
+###########
+log_with : 'tensorboard' # only tensorboard
+####### Save checkpoints and final model
+output_dir : /home/ecomapper/data/datasets/models/finetuned/
+
+####### optimizer setting #######
+
+freeze_layer : 12 
+learning_rate : 1e-6
+weight_decay : 1e-2
+adam_beta1 : 0.9
+adam_beta2 : 0.999
+adam_epsilon : 1e-8
+weighting_scheme: logit_normal #["sigma_sqrt", "logit_normal", "mode", "cosmap"],
+##### training and dataloader setting ########
+per_gpu_batch_size : 24
+input_size : 512 
+max_epochs : 2
+num_workers : 32
+
+
+output_size : 512
+num_metadata : 10 
+
+
+
+dataset_root: "/home/ecomapper/data/datasets/"
+dataset_names : ["proportional_sampled_points_seed_14",
+                      "proportional_sampled_points_seed_70_new", 
+                      "proportional_sampled_points_seed_126",
+                      "proportional_sampled_points_seed_28", 
+                        "proportional_sampled_points_seed_42",
+                        "proportional_sampled_points_seed_56", 
+                        "proportional_sampled_points_seed_84",
+                        "proportional_sampled_points_seed_112",
+                        "proportional_sampled_points_seed_140",
+
+]
+csv_paths : ["/home/ecomapper/data/datasets/seed_14_final.csv",
+                  "/home/ecomapper/data/datasets/seed_70_train.csv" ,
+                  "/home/ecomapper/data/datasets/seed_126_final.csv",
+                  "/home/ecomapper/data/datasets/seed_28_final.csv", 
+                    "/home/ecomapper/data/datasets/seed_42_final.csv",
+                    "/home/ecomapper/data/datasets/seed_56_final.csv",
+                    "/home/ecomapper/data/datasets/seed_84_final.csv",
+                    "/home/ecomapper/data/datasets/seed_112_final.csv",
+                    "/home/ecomapper/data/datasets/seed_140_final.csv",
+]
+
+
+
+
+
+
+##### How often save model 
+checkpointing_steps : 5000
+##### resume the training? from which checkpoint? latest?
+resume_from_checkpoint : "" ## [latest, checkpoint-1000, ""]
+checkpoints_total_limit : 5
+
+
+##### other settings
+
+
+local_rank : 1
+gradient_accumulation_steps : 1 
+max_grad_norm : 1.0
+loss : 'mse_loss'
+prediction_type : default
+input_perturbation : 0.1
+noise_offset : 0.0
+project_dir : /home/ecomapper/DiffusionSat/project #?
+seed : 7777
