@@ -6,8 +6,8 @@
 
 EcoMapper features two core capabilities:
 
-- ** Text-to-Image Generation**: Uses **Stable Diffusion 3 (SD3)** to synthesize satellite images from climate-aware text prompts, incorporating location, time, land cover type, and environmental conditions such as temperature, precipitation, and solar radiation.
-- ** Multi-Conditional Image Generation**: Integrates **ControlNet** to guide generation with both text and image inputs, preserving spatial structures while simulating environmental changes over time.
+- **Text-to-Image Generation**: Uses **Stable Diffusion 3 (SD3)** to synthesize satellite images from climate-aware text prompts, incorporating location, time, land cover type, and environmental conditions such as temperature, precipitation, and solar radiation.
+- **Multi-Conditional Image Generation**: Integrates **ControlNet** to guide generation with both text and image inputs, preserving spatial structures while simulating environmental changes over time.
 
 These models enable:
 - The creation of **cloud-free synthetic observations** for regions affected by persistent coverage
