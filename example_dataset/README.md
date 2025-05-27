@@ -1,14 +1,14 @@
 # Ecomapper Dataset Card
 
 ## Dataset Summary
-The Ecomapper dataset consists of over 2.7 million satellite images with climate metadata. It includes RGB imagery and corresponding metadata from the **Sentinel satellite missions**, covering various land cover types and temporal data points.
-The training set contains 98,930 locations, each spanning 24 months of data, while the test set includes 5,494 locations, each covering 72 months. For each temporal data point, the metadata also provides weather data, including temperature, solar radiation, and precipitation.
+The Ecomapper dataset consists of over 2.9 million satellite images with climate metadata. It includes RGB imagery and corresponding metadata from the **Sentinel satellite missions**, covering various land cover types and temporal data points.
+The training set contains 98,930 locations, each spanning 24 months of data, while the test set includes 5,494 locations, each covering 96 months. For each temporal data point, the metadata also provides weather data, including temperature, solar radiation, and precipitation.
 The satellite imagery originates from the Copernicus Sentinel-2 mission, supported by the **European Space Agency (ESA)** NoR program.
 
 ### Dataset Version and Maintenance
 #### Maintenance Status
 - **Regularly Updated:** Yes
-- **Last Updated:** 12/2024
+- **Last Updated:** 05/2025
 
 ## Supported Tasks
 - **Agricultural Monitoring**: Analyzing land cover changes, identifying crop types, and monitoring vegetation growth.
@@ -42,7 +42,7 @@ The satellite imagery originates from the Copernicus Sentinel-2 mission, support
 | Size of Training Dataset      | 690 GB                                    |
 | Size of Test Dataset   | 133 GB        | 
 | Number of Instances in Train Dataset  | 99,000 locations × 24 months = 2,376,000  |
-| Number of Instances in Test Dataset  | 5,500 locations × 72 months = 396,000  |
+| Number of Instances in Test Dataset  | 5,500 locations × 72 months = 528,000  |
 | Labeled Classes      | 15  |
 
 ### Directory Structure
