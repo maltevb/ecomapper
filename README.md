@@ -46,7 +46,7 @@ To get started, set up the environment and install the required dependencies by 
 First, clone the repository to your local machine and then create an environment to install requirements.
 
 ```bash
-git clone https://github.com/anonymous-submission-xxx/ecomapper.git
+git clone https://github.com/maltevb/ecomapper.git
 cd Ecomapper
 conda create -n ecomapper python=3.10
 conda activate ecomapper
