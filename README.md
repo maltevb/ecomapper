@@ -104,6 +104,13 @@ python validation/validate_controlnet_lora.py
 
 Notes for diffsat metrics: To compute clip score, before running batch_compute_metrics.py, insert the clip caption from the json files of the SD3 images to the json file of the diffsat images.
 
+#### SD3
 ```bash
 python validation/batch_compute_metrics.py
 ```
+
+#### ControlNet
+```bash
+python validation/batch_compute_metrics_controlnet.py
+```
+
