@@ -4,6 +4,7 @@
 The Ecomapper dataset consists of over 2.9 million satellite images with climate metadata. It includes RGB imagery and corresponding metadata from the **Sentinel satellite missions**, covering various land cover types and temporal data points.
 The training set contains 98,930 locations, each spanning 24 months of data, while the test set includes 5,494 locations, each covering 96 months. For each temporal data point, the metadata also provides weather data, including temperature, solar radiation, and precipitation.
 The satellite imagery originates from the Copernicus Sentinel-2 mission, supported by the **European Space Agency (ESA)** NoR program.
+<img width="1733" alt="Dataset (1)" src="https://github.com/user-attachments/assets/6b5a2528-2bfb-41f5-a230-73aace1eb6e0" />
 
 ### Dataset Version and Maintenance
 #### Maintenance Status
