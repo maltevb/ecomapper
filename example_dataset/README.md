@@ -1,9 +1,7 @@
 # Ecomapper Dataset Card
 
 ## Dataset Summary
-The Ecomapper dataset consists of over 2.9 million satellite images with climate metadata. It includes RGB imagery and corresponding metadata from the **Sentinel satellite missions**, covering various land cover types and temporal data points.
-The training set contains 98,930 locations, each spanning 24 months of data, while the test set includes 5,494 locations, each covering 96 months. For each temporal data point, the metadata also provides weather data, including temperature, solar radiation, and precipitation.
-The satellite imagery originates from the Copernicus Sentinel-2 mission, supported by the **European Space Agency (ESA)** NoR program.
+The EcoMapper dataset comprises over 2.9 million satellite images accompanied by climate metadata. It includes both RGB imagery and selected multispectral channels (B6 – Red Edge 2, B8 – NIR, B11 – SWIR1) sourced from the Copernicus Sentinel satellite missions. The dataset spans diverse land cover types and multiple temporal points. The training set features 98,930 unique locations, each with 24 months of data, while the test set includes 5,494 locations covering 96 months. Each timestamp is paired with weather-related metadata, including temperature, solar radiation, and precipitation. The imagery is derived from the Sentinel-2 mission, supported by the **European Space Agency’s** (ESA) Network of Resources (NoR) program.
 <img width="1733" alt="Dataset (1)" src="https://github.com/user-attachments/assets/6b5a2528-2bfb-41f5-a230-73aace1eb6e0" />
 
 ### Dataset Version and Maintenance
@@ -43,7 +41,7 @@ The satellite imagery originates from the Copernicus Sentinel-2 mission, support
 | Size of Training Dataset      | 690 GB                                    |
 | Size of Test Dataset   | 133 GB        | 
 | Number of Instances in Train Dataset  | 99,000 locations × 24 months = 2,376,000  |
-| Number of Instances in Test Dataset  | 5,500 locations × 72 months = 528,000  |
+| Number of Instances in Test Dataset  | 5,500 locations × 96 months = 528,000  |
 | Labeled Classes      | 15  |
 
 ### Directory Structure
@@ -51,21 +49,41 @@ The dataset is organized into three batches, each spanning two years and contain
 
 ```
 Dataset/
-├── Training/
-│   ├── Batch_1_2017_2018/
-│   │   ├── Location_1/
-│   │   │   ├── 1_2017_01_01.png
-│   │   │   ├── 1_2017_01_01.json
-│   │   │   ├── 1_2017_02_01.png
-│   │   │   ├── 1_2017_02_01.json
-│   │   │   └── ... (44 more files)
-│   │   ├── Location_2/
-│   │   │   └── ...
-│   │   └── ... (27,998 more locations)
-│   ├── Batch_2_2019_2020/
+├── Train/
+│   ├── 2017_2018/
+|   |   ├── Batch-1/
+│   │   |   ├── Location_1/
+│   │   |   │   ├── 1_2017_01_01.png
+│   │   |   │   ├── 1_2017_01_01.json
+│   │   |   │   ├── 1_2017_02_01.png
+│   │   |   │   ├── 1_2017_02_01.json
+│   │   |   │   └── ... (44 more files)
+│   │   |   ├── Location_2/
+│   │   |   │   └── ...
+│   │   |   └── ... (27,998 more locations)
+|   |   ├── Batch-1-ms/
+│   │   |   ├── Location_1/
+│   │   |   │   ├── 1_2017_01_01.png
+│   │   |   │   ├── 1_2017_02_01.png
+│   │   |   │   └── ... (22 more files)
+│   │   |   ├── Location_2/
+│   │   |   │   └── ...
+│   │   |   └── ... (27,998 more locations)
+|   |   |   
+│   |   ├── Batch_2/
 │   │   └── ...
-│   ├── Batch_3_2021_2022/
+│   |   ├── Batch_2-ms/
 │   │   └── ...
+│   |   ├── Batch_3/
+│   │   └── ...
+│   |   ├── Batch_3-ms/
+│   │   └── ...
+|   ├── 2019_2020/
+│   |   ├── Batch_4/
+│   │   └── ...
+│   |   ├── Batch_5/
+│   │   └── ...
+|   |
 └── Test/
     ├── Location_1/
     |    ├── 1_2017_01_01.png
@@ -97,7 +115,7 @@ Dataset/
 ### Example Entry
 | Latitude  | Longitude | Month-Year | Land Cover Type | Cloud Coverage (%) | Weather Data (Solar Radiation, Precipitation, Temp)    | Sentinel Band Data |
 |-----------|-----------|------------|-----------------|--------------------|-------------------------------------------------------|---------------------|
-| 34.0522   | -118.2437 | 2022-01    | Urban           | 15                 | Solar Rad: 5.5 kWh/m², Precip: 30 mm, Temp: 20°C       | [2, 3, 4]|
+| 34.0522   | -118.2437 | 2022-01    | Urban           | 15                 | Solar Rad: 5.5 kWh/m², Precip: 30 mm, Temp: 20°C       | [2, 3, 4], [6,8,11]|
 
 ### Data Fields
 | Field Name         | Field Value         | Description                       |
@@ -112,8 +130,6 @@ Dataset/
 ## Languages
 - English (metadata)
 
-## Size
-- 84,000 locations × 24 months of data (Total size: [Insert Size]).
 
 ## License
 - [http://creativecommons.org/licenses/by/4.0]
