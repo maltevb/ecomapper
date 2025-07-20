@@ -112,4 +112,12 @@ python validation/batch_compute_metrics.py
 ```bash
 python validation/batch_compute_metrics_controlnet.py
 ```
-
+#### Citation
+If you find our project helpful, please cite our paper:
+@inproceedings{goktepe2025ecomapper,
+  title     = {EcoMapper: Generative Modeling for Climate‑Aware Satellite Imagery},
+  author    = {G{\"o}ktepe, Muhammed and Shamseddin, Amir Hossein and Uysal, Erencan and Monteagudo, Javier and Drees, Lukas and Toker, Aysim and Asseng, Senthold and von Bloh, Malte},
+  booktitle = {Proceedings of the 42nd International Conference on Machine Learning (ICML)},
+  year      = {2025},
+  month     = {July},
+}
