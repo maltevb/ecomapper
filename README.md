@@ -1,5 +1,4 @@
-# EcoMapper: Generative Modeling for Climate-Aware Satellite Imagery
-
+# EcoMapper: Generative Modeling for Climate-Aware Satellite Imagery (ICML 2025)
 ## Introduction
 
 **EcoMapper** is a generative modeling framework designed to produce realistic, climate-aware satellite imagery using advanced diffusion models. This project combines remote sensing with climate data, leveraging a globally distributed dataset of **2.9 million Sentinel-2 images** across 15 land cover types and 6 years of monthly data.
